@@ -12,7 +12,7 @@
   <div class="row">
     <div class="span6">
       <div class="well">
-      {{> loginButtons}}
+        {{> loginButtons}}
       </div>
       <table class="table">
         {{#each users}}
@@ -27,6 +27,7 @@
  <tr>
   <td>
     <a target="_blank" href="http://twitter.com/{{services.twitter.screenName}}"><img src="{{services.twitter.profile_image_url}}"/> {{profile.name}}</a>
+    <iframe style="width: 300px; height: 20px;" src="//platform.twitter.com/widgets/follow_button.html?screen_name={{services.twitter.screenName}}" height="240" width="320" frameborder="0" scrolling="no"></iframe>
   </td>
 </tr> 
 </template>
