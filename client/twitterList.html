@@ -6,7 +6,30 @@
   <div class="container">
     {{> content}}
   </div>
+
+  <div class="container" id="main">
+    {{#if currentUser}}
+    {{> addquestion}}
+    {{/if}}
+    {{#unless currentUser}}
+    {{> offlineUser}}
+    {{/unless}}
+  </div>
+
 </body>
+
+<template name="offlineUser">
+  Logueate...
+</template>
+
+
+
+<template name="addquestion">
+
+  <textarea rows="3" class="input-xxlarge" name="questionText" id="questionText" placeholder="Add Your Question"></textarea>
+  <br/>
+  <input type="button" class="btn-info add-question" value="Add Question"/>
+</template>
 
 <template name="content">
   <div class="row">
@@ -20,7 +43,28 @@
         {{/each}}
       </table>
     </div>
+    <div class="span6">
+      {{> questions}}
+    </div>
   </div>
+</template>
+
+<template name="questions">
+    <h2>All Questions</h2>
+    {{#each items}}
+        {{> question}}
+     {{/each}}
+</template>
+ 
+<template name="question">
+    <div>
+        <p class="lead">
+            {{questionText}}
+            <a class="btn btn-small btn-success yes {{#unless currentUser}}disabled{{/unless}}" href="#"><i class="icon-thumbs-up"></i> Yes {{yes}}</a>
+ 
+            <a class="btn btn-small btn-danger no {{#unless currentUser}}disabled{{/unless}}" href="#"><i class="icon-thumbs-down"></i> No {{no}}</a>
+        </p>
+    </div>
 </template>
 
 <template name="user">
